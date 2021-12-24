@@ -1,0 +1,21 @@
+⌘Enter / ⇧⌘Enter Insert line below/above
+⇧⌘\ Jump to matching bracket
+⌘] / ⌘[ Indent/outdent line
+⌥⌘[ / ⌥⌘] Fold/unfold region
+⌘U Undo last cursor operation
+⇧⌥I Insert cursor at end of each line selected
+⌘L Select current line
+⇧⌘L Select all occurrences of current selection
+⌘F2 Select all occurrences of current word
+⌘U Undo last cursor operation
+⇧⌥I Insert cursor at end of each line selected
+⌘L Select current line
+⇧⌘L Select all occurrences of current selection
+⌘F2 Select all occurrences of current word
+⌘F Find
+⌥⌘F Replace
+⌘G / ⇧⌘G Find next/previous
+⌃Space, ⌘I Trigger suggestion
+⌘K ⌘F Format selection
+⌘K ⌘X Trim trailing whitespace
+⌘T Show all Symbols
