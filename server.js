@@ -1,55 +1,35 @@
 const express = require('express')
 const cors = require('cors')
 const path = require('path')
-// const expressSession = require('express-session')
 
 const app = express()
 const http = require('http').createServer(app)
 
-// session setup
-// const session = expressSession({
-//     secret: 'coding is amazing',
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: { secure: false }
-// })
-// Express App Config
 app.use(express.json())
-// app.use(session)
-// app.use(express.static('public'))
 
 if (process.env.NODE_ENV === 'production') {
-    // Express serve static files on production environment
     app.use(express.static(path.resolve(__dirname, 'public')))
     app.use(cors())
 } else {
-    // Configuring CORS
     const corsOptions = {
-        // Make sure origin contains the url your frontend is running on
-        origin: ['http://127.0.0.1:8080', 'http://localhost:8080','http://127.0.0.1:3000', 'http://localhost:3000'],
+        origin: [
+            'http://127.0.0.1:8080', 'http://localhost:8080',
+            'http://127.0.0.1:3030', 'http://localhost:3030',
+            'http://127.0.0.1:3000', 'http://localhost:3000'
+        ],
         credentials: true
     }
-    // app.use(cors(corsOptions))
     app.use(cors())
 }
 
-// const authRoutes = require('./api/auth/auth.routes')
-// const userRoutes = require('./api/user/user.routes')
 const yesnoRoutes = require('./api/yes-no/yes-no.routes')
 
 
-// routes
-// app.use('/api/auth', authRoutes)
-// app.use('/api/user', userRoutes)
 app.use('/api/yes-no', yesnoRoutes)
 
-// Make every server-side-route to match the index.html
-// so when requesting http://localhost:3030/index.html/car/123 it will still respond with
-// our SPA (single page app) (the index.html file) and allow vue-router to take it from there
 app.get('/**', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
-
 
 const logger = require('./services/logger.service')
 const port = process.env.PORT || 3030
